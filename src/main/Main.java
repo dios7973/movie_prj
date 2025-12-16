@@ -1,18 +1,20 @@
 package main;
 
-import movie.*;
+import Student.*;
 
 public class Main {
+
     public static void main(String[] args) {
-        MovieList movieList = new MovieList();
-        Reservation reservation = new Reservation();
 
-        movieList.showAll();
+        StudentList list = new StudentList();
 
-        System.out.println("\n👉 어벤져스 2좌석 예매 시도");
-        Movie selectedMovie = movieList.getMovie(2); // 어벤져스
-        reservation.reserve(selectedMovie, 2);
+        System.out.println("=== 전체 학생 목록 ===");
+        list.printAll();
 
-        System.out.println("\n🎫 남은 좌석 수: " + selectedMovie.getRemainingSeats());
+        Student s = list.getStudent(1); // 두 번째 학생
+        if (s == null) return;
+
+        ScoreService service = new ScoreService();
+        service.print(s);
     }
 }
